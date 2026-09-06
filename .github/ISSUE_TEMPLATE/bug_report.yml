@@ -1,0 +1,53 @@
+name: Bug report
+description: Report a reproducible Codex Rhythm problem.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: Do not attach auth.json, access tokens, account IDs, cookies, or unredacted Codex logs.
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+      placeholder: macOS 15.5
+    validations:
+      required: true
+  - type: input
+    id: rhythm
+    attributes:
+      label: Codex Rhythm version
+      placeholder: 3.5.0
+    validations:
+      required: true
+  - type: input
+    id: codex
+    attributes:
+      label: Codex version
+      placeholder: Codex CLI or desktop version
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Include the displayed value and data source, but remove sensitive information.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Install with ...
+        2. Click ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Sanitized log lines
+      description: Optional. Never include tokens, IDs, cookies, or unrelated Codex request content.
+      render: shell

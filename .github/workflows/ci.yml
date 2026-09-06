@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: macos-14
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Show Swift version
+        run: swiftc --version
+      - name: Run regression tests
+        run: ./scripts/test.sh
+      - name: Build app bundle
+        run: ./scripts/build.sh
+      - name: Verify signature
+        run: codesign --verify --deep --strict build/CodexRhythm.app
+      - name: Upload app bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: CodexRhythm-macOS
+          path: build/CodexRhythm.app

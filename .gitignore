@@ -1,0 +1,6 @@
+.DS_Store
+build/
+dist/
+Resources/AppIcon/.AppIcon.icns-*
+*.log
+*.zip
